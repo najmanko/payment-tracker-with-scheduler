@@ -1,0 +1,9 @@
+AAA 123
+VVV 890
+asdfasdfasdfa
+%%
+AAA 123
+EUR 100
+EUR 200
+EUR -1000
+AAA 17a

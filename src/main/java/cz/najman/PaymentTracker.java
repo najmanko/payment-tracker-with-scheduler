@@ -16,7 +16,7 @@ public class PaymentTracker {
 
     void runProgram(String[] args) {
         if (args.length > 0) {
-            addAmountsFromInputFile(args.toString());
+            addAmountsFromInputFile(args[0]);
         }
 
         showAmountListEveryMinute();
@@ -31,6 +31,10 @@ public class PaymentTracker {
         printCurrencyAmountsOnConsole(currencyAmounts);
     }
 
+    void addAmountsFromInputFile(String fileName) {
+        addAmountToCurrencyAmounts(readCurrencyAmountMapFromFile(fileName));
+    }
+
     private void addAmountToCurrencyAmounts(Map<String, BigDecimal> newInput) {
         newInput.keySet().stream().forEach(key ->
                 currencyAmounts.put(key, currencyAmounts.containsKey(key) ?
@@ -43,10 +47,6 @@ public class PaymentTracker {
             String input = readInputOrQuit();
             addAmountToCurrencyAmounts(input);
         }
-    }
-
-    private void addAmountsFromInputFile(String fileName) {
-        addAmountToCurrencyAmounts(readCurrencyAmountMapFromFile(fileName));
     }
 
     private void showAmountListEveryMinute() {

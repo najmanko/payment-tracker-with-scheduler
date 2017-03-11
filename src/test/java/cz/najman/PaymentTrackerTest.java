@@ -109,6 +109,36 @@ public class PaymentTrackerTest {
     }
 
     @Test
+    public void shouldPrintCorrectCurrencyFromInputFile() {
+        //when
+        paymentTracker.addAmountsFromInputFile("currencyAmountsExamples.txt");
+        paymentTracker.printAmountsTable();
+
+        //then
+        assert outContent.toString().contains("Reading from file currencyAmountsExamples.txt");
+        assert outContent.toString().contains("Output:");
+        assert outContent.toString().contains("AAA 123");
+        assert outContent.toString().contains("VVV 890");
+        assert outContent.toString().contains("EUR -1000 (USD -1067.34)");
+        assert errContent.toString().contains("Input row \"asdfasdfasdfa\" is invalid!");
+        assert errContent.toString().contains("Input row \"%%\" is invalid!");
+        assert errContent.toString().contains("Input row \"AAA 17a\" is invalid!");
+    }
+
+    @Test
+    public void shouldPrintCorrectCurrencyFromInvalidFile() {
+        //when
+        paymentTracker.addAmountsFromInputFile("invalidFile.txt");
+        paymentTracker.printAmountsTable();
+
+        //then
+        assert outContent.toString().contains("Reading from file invalidFile.txt");
+        assert outContent.toString().contains("Output:");
+        assert errContent.toString().contains("Input file invalidFile.txt is not readable! " +
+                "Cause of: java.nio.file.NoSuchFileException: invalidFile.txt");
+    }
+
+    @Test
     public void shouldPrintWrongInputValueErrorForNotCapital() {
         //when
         paymentTracker.addAmountToCurrencyAmounts("Aaa 123");

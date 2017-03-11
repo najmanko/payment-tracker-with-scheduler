@@ -27,10 +27,11 @@ public class Utils {
 
     static Map<String, BigDecimal> readCurrencyAmountMapFromFile(final String fileName) {
         Map<String, BigDecimal> currencyAmountFromFile = new HashMap<>();
+        System.out.println("Reading from file " + fileName);
         try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
             stream.forEach(input -> currencyAmountFromFile.putAll(resolveCurrencuAmountMap(input)));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Input file " + fileName + " is not readable! Cause of: " + e.toString());
         }
         return currencyAmountFromFile;
     }
