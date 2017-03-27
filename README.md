@@ -13,7 +13,8 @@ or with input data file command: java -jar payment-tracker-with-scheduler-1.0-SN
 #Exceptions behavior
 If the user enters invalid input, or in data file are invalid data, then program just write error message to console.
  
-#Used currencies
+#Used currencies:
+
 CZK: 0.039507
 
 EUR: 1.067346
