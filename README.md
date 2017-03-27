@@ -10,15 +10,11 @@ Read, parse values currency and amounts and every minute write table from it to 
 
 or with input data file command: java -jar payment-tracker-with-scheduler-1.0-SNAPSHOT.jar "c:\data.txt"
 
-#Exceptions behavior
+# Exceptions behavior
 If the user enters invalid input, or in data file are invalid data, then program just write error message to console.
  
-#Used currencies:
-
+# Used currencies:
 CZK: 0.039507
-
 EUR: 1.067346
-
 HKD: 0.128792
-
 RMB: 0.144765
